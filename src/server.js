@@ -1,14 +1,14 @@
 import express from 'express';
 import { PrismaClient } from '@prisma/client';
 import dotenv from 'dotenv';
-
+import taskRoutes from "./routes/taskRoutes.js"
 dotenv.config();
 
 const app = express();
 const prisma = new PrismaClient();
 
 app.use(express.json());
-
+app.use('/tasks',taskRoutes)
 //routes
 app.get('/', (req, res) => {
   res.send('🚀 Server is running!');
